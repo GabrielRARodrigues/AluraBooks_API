@@ -4,6 +4,8 @@ const logradouro = document.getElementById('endereco')
 
 const estado = document.getElementById('estado')
 
+const bairro = document.getElementById('bairro')
+
 const mensagemErro = document.getElementById('erro')
 
 const cep = document.getElementById('cep')
@@ -17,6 +19,7 @@ async function buscaEndereco(cep) {
       throw Error('CEP não existente')
     }
     preencheCamposEndereco(consultaCEPConvertida)
+    mensagemErro.innerHTML = ''
     return consultaCEPConvertida
   } catch (erro) {
     mensagemErro.innerHTML = `<p style="margin:10px; color:#D2001A;">CEP inválido. Tente novamente!</p>`
@@ -28,6 +31,7 @@ function preencheCamposEndereco(endereco) {
   cidade.value = endereco.localidade
   logradouro.value = endereco.logradouro
   estado.value = endereco.uf
+  bairro.value = endereco.bairro
 }
 
 // let ceps = ['01001000', '01001001']
